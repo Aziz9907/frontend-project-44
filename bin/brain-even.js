@@ -14,6 +14,7 @@ do {
 
   const correctAnswer = isEven(getRandomNum) ? 'yes' : 'no';
   const firstAnswer = (readlineSync.question('Your answer is: '));
+
   if (firstAnswer.toLowerCase() === correctAnswer) {
     sum += 1;
     console.log('Correct!');
