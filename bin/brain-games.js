@@ -1,4 +1,6 @@
 #!/usr/bin/env node
 import game from '../src/cli.js';
 
-game();
+const name = game();
+
+console.log(name);
