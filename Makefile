@@ -1,4 +1,4 @@
-install: 
+install:
 	npm ci
 
 lint:
@@ -12,4 +12,3 @@ brain-games:
 
 brain-even:
 	node bin/brain-even.js
-	
