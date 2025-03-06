@@ -6,6 +6,9 @@ lint:
 
 publish:
 	npm publish --dry-run
+	
+test:
+	npm test
 
 brain-games:
 	node bin/brain-games.js
@@ -15,6 +18,6 @@ brain-even:
 
 brain-calc:
 	node bin/brain-calc.js
-	
+
 brain-gcd:
 	node bin/brain-gcd.js
