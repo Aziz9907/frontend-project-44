@@ -1,53 +1,37 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import game from '../src/cli.js';
+import game, { generateRandNum, calculateExpression } from '../src/cli.js';
 
 const name = game();
 
-console.log('What is the result of the expression?');
 const operations = ['+', '-', '*'];
 
-// const generateExpression = () => {
-//   const getRandomInt1 = () => Math.floor(Math.random() * 50) + 1;
-//   const getRandomInt2 = () => Math.floor(Math.random() * 50) + 1;
+const playGame = () => {
+  let sum = 0;
+  console.log('What is the result of the expression?');
 
-//   const operation = operations[Math.floor(Math.random() * operations.length)];
-//   return operation;
-// };
+  while (sum < 3) {
+    const num1 = generateRandNum(1, 15);
+    const num2 = generateRandNum(1, 15);
 
-// const calculateExpression = (num1, num2, operation) => {
-//   switch (operation) {
-//     case '+':
-//       return num1 + num2;
-//     case '-':
-//       return num1 - num2;
-//     case '*':
-//       return num1 * num2;
-//     default:
-//       return null;
-//   }
-// };
-// let sum = 0;
+    const operation = operations[Math.floor(Math.random() * operations.length)];
 
-// const calcGame = () => {
-//   do {
-//     const { num1, num2, operation } = generateExpression();
-//     const correctAnswer = calculateExpression(num1, num2, operation);
-//     const expression = `${num1} ${num2} ${operation}`;
-//     console.log(`Question is: ${expression}`);
-//     readlineSync.question('Your answer is: ');
-//   } while (sum < 3);
-// };
-// calcGame();
+    const question = (`Question: ${num1} ${operation} ${num2}: `);
+    console.log(question);
+    const userAnswer = readlineSync.question('Your answer is: ');
+    const correctAnswer = calculateExpression(num1, num2, operation);
 
-function generateExpression(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+    if (Number(userAnswer) === Number(correctAnswer)) {
+      console.log('Correct!');
+      sum += 1;
+    } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again ${name}!`);
+      return;
+    }
+  }
 
-const calculateExpression = {
-  '+': function (x, y) { return x + y },
-  '-': function (x, y) { return x - y },
-  '*': function (x, y) { return x * y }
-}
+  console.log(`Congratulations, ${name}!`);
+};
+
+playGame();
