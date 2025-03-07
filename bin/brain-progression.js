@@ -1,18 +1,31 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import game, { generateRandNum } from '../src/cli.js';
+import game, { generateProgression } from '../src/cli.js';
 
-const name = game();
+const progressionGame = () => {
+  const name = game();
 
-const arr = [];
-function progressionGame() {
-  const length = generateRandNum(5, 10);
-  const num1 = generateRandNum();
-  const steps = generateRandNum();
-  for (let i = 0; i < length; i += 1) {
-    arr.push(num1 + steps + i);
+  let sum = 0;
+
+  console.log('What number is missing in the progression?');
+
+  while (sum < 3) {
+    const gameProgress = generateProgression();
+    console.log(`Question is: ${gameProgress.progression}`);
+    const userAnswer = Number(readlineSync.question('Your answer is: '));
+    const correctAnswer = gameProgress.hiddenElement;
+
+    if (userAnswer === correctAnswer) {
+      console.log('Correct!');
+      sum += 1;
+    } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
+      console.log(`Let's try again, ${name}`);
+      return;
+    }
   }
-  console.log(arr.join(' '));
-}
+
+  console.log(`Congratulations, ${name}`);
+};
 
 progressionGame();

@@ -2,11 +2,11 @@
 import readlineSync from 'readline-sync';
 import game, { generateRandNum, calculateExpression } from '../src/cli.js';
 
-const name = game();
+const calcGame = () => {
+  const name = game();
 
-const operations = ['+', '-', '*'];
+  const operations = ['+', '-', '*'];
 
-const playGame = () => {
   let sum = 0;
   console.log('What is the result of the expression?');
 
@@ -16,12 +16,11 @@ const playGame = () => {
 
     const operation = operations[Math.floor(Math.random() * operations.length)];
 
-    const question = (`Question: ${num1} ${operation} ${num2}: `);
-    console.log(question);
-    const userAnswer = readlineSync.question('Your answer is: ');
-    const correctAnswer = calculateExpression(num1, num2, operation);
+    console.log(`Question: ${num1} ${operation} ${num2}: `);
+    const userAnswer = Number(readlineSync.question('Your answer is: '));
+    const correctAnswer = Number(calculateExpression(num1, num2, operation));
 
-    if (Number(userAnswer) === Number(correctAnswer)) {
+    if (userAnswer === correctAnswer) {
       console.log('Correct!');
       sum += 1;
     } else {
@@ -34,4 +33,4 @@ const playGame = () => {
   console.log(`Congratulations, ${name}!`);
 };
 
-playGame();
+calcGame();

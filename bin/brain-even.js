@@ -4,9 +4,12 @@ import game from '../src/cli.js';
 
 const isEvenGame = () => {
   const name = game();
+
   let sum = 0;
+
   console.log('Answer "yes" if the number is even, otherwise answer "no"');
-  do {
+
+  while (sum < 3) {
     const getRandomInt = () => Math.floor(Math.random() * 100) + 1;
     const isEven = (num) => num % 2 === 0;
     const getRandomNum = getRandomInt();
@@ -14,9 +17,9 @@ const isEvenGame = () => {
     console.log(`Question: ${getRandomNum}`);
 
     const correctAnswer = isEven(getRandomNum) ? 'yes' : 'no';
-    const firstAnswer = readlineSync.question('Your answer is: ');
+    const firstAnswer = readlineSync.question('Your answer is: ').toLowerCase();
 
-    if (firstAnswer.toLowerCase() === correctAnswer) {
+    if (firstAnswer === correctAnswer) {
       sum += 1;
       console.log('Correct!');
     } else {
@@ -26,11 +29,9 @@ const isEvenGame = () => {
       console.log(`Let's try again, ${name}`);
       return;
     }
-  } while (sum < 3);
-
-  if (sum === 3) {
-    console.log(`Congratulations, ${name}`);
   }
+
+  console.log(`Congratulations, ${name}`);
 };
 
 isEvenGame();

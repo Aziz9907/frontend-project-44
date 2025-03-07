@@ -2,10 +2,11 @@
 import readlineSync from 'readline-sync';
 import game, { generateRandNum, gcd } from '../src/cli.js';
 
-const name = game();
-
 const gcdGame = () => {
+  const name = game();
+
   let sum = 0;
+
   console.log('Find the greatest common divisor of given numbers.');
 
   while (sum < 3) {
@@ -24,6 +25,7 @@ const gcdGame = () => {
       return;
     }
   }
+
   console.log(`Congratulations, ${name}`);
 };
 
