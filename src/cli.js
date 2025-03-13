@@ -45,3 +45,14 @@ export function generateProgression() {
     hiddenElement,
   };
 }
+
+export function checkAnswer(userAnswer, correctAnswer, sum, name) {
+  if (userAnswer === correctAnswer) {
+    sum += 1;
+    console.log('Correct!');
+  } else {
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
+    console.log(`Let's try again, ${name}`);
+    return;
+  }
+}
