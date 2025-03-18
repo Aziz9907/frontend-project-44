@@ -15,7 +15,7 @@ const isEvenGame = () => {
     const correctAnswer = isEven(getRandomNum) ? 'yes' : 'no';
     const userAnswer = readlineSync.question('Your answer is: ').toLowerCase();
 
-    if (checkAnswer(Number(userAnswer), correctAnswer, name)) {
+    if (checkAnswer(userAnswer, correctAnswer, name)) {
       sum += 1;
     } else {
       return;

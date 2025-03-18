@@ -14,7 +14,7 @@ const primeGame = () => {
     const userAnswer = readlineSync.question('Your answer is: ').toLowerCase();
     const correctAnswer = isPrime(num) ? 'yes' : 'no';
 
-    if (checkAnswer(Number(userAnswer), correctAnswer, name)) {
+    if (checkAnswer(userAnswer, correctAnswer, name)) {
       sum += 1;
     } else {
       return;
