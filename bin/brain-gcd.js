@@ -13,7 +13,7 @@ const gcdGame = () => {
     const num1 = generateRandNum(1, 10);
     const num2 = generateRandNum(1, 10);
 
-    console.log(`Question ${num1} ${num2}`);
+    console.log(`Question: ${num1} ${num2}`);
     const userAnswer = Number(readlineSync.question('Your answer is: '));
     const correctAnswer = Number(gcd(num1, num2));
     if (checkAnswer(userAnswer, correctAnswer) === true) {
