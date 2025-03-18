@@ -18,13 +18,13 @@ const progressionGame = () => {
       sum += 1;
       console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
-      console.log(`Let's try again, ${name}`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${name}!`);
       return;
     }
   }
 
-  console.log(`Congratulations, ${name}`);
+  console.log(`Congratulations, ${name}!`);
 };
 
 progressionGame();

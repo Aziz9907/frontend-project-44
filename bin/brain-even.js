@@ -4,9 +4,7 @@ import game, { checkAnswer } from '../src/cli.js';
 
 const isEvenGame = () => {
   const name = game();
-
   let sum = 0;
-
   console.log('Answer "yes" if the number is even, otherwise answer "no"');
 
   while (sum < 3) {
@@ -20,8 +18,8 @@ const isEvenGame = () => {
       sum += 1;
       console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
-      console.log(`Let's try again, ${name}`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${name}!`);
       return;
     }
   }
