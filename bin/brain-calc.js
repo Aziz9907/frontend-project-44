@@ -24,12 +24,10 @@ const calcGame = () => {
     console.log(`Question: ${num1} ${operation} ${num2}`);
     const userAnswer = Number(readlineSync.question('Your answer is: '));
     const correctAnswer = Number(calculateExpression(num1, num2, operation));
-    if (checkAnswer(userAnswer, correctAnswer) === true) {
+
+    if (checkAnswer(Number(userAnswer), correctAnswer, name)) {
       sum += 1;
-      console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let's try again, ${name}!`);
       return;
     }
   }

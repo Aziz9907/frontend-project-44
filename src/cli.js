@@ -46,9 +46,20 @@ export function generateProgression() {
   };
 }
 
-export function checkAnswer(userAnswer, correctAnswer) {
-  if (userAnswer === correctAnswer) {
+export function isPrime(n) {
+  if (n <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(n); i += 1) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+
+export const checkAnswer = (answer, correct, name) => {
+  if (correct === answer) {
+    console.log('Correct');
     return true;
   }
+  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correct}'.`);
+  console.log(`Let's try again, ${name}!`);
   return false;
-}
+};

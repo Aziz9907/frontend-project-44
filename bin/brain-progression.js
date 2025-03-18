@@ -14,12 +14,10 @@ const progressionGame = () => {
     console.log(`Question: ${gameProgress.progression}`);
     const userAnswer = Number(readlineSync.question('Your answer is: '));
     const correctAnswer = gameProgress.hiddenElement;
-    if (checkAnswer(userAnswer, correctAnswer) === true) {
+
+    if (checkAnswer(Number(userAnswer), correctAnswer, name)) {
       sum += 1;
-      console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let's try again, ${name}!`);
       return;
     }
   }

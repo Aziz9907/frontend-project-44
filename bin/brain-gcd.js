@@ -4,9 +4,7 @@ import game, { generateRandNum, gcd, checkAnswer } from '../src/cli.js';
 
 const gcdGame = () => {
   const name = game();
-
   let sum = 0;
-
   console.log('Find the greatest common divisor of given numbers.');
 
   while (sum < 3) {
@@ -16,12 +14,10 @@ const gcdGame = () => {
     console.log(`Question: ${num1} ${num2}`);
     const userAnswer = Number(readlineSync.question('Your answer is: '));
     const correctAnswer = Number(gcd(num1, num2));
-    if (checkAnswer(userAnswer, correctAnswer) === true) {
+
+    if (checkAnswer(Number(userAnswer), correctAnswer, name)) {
       sum += 1;
-      console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let's try again, ${name}!`);
       return;
     }
   }
