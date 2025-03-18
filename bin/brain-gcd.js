@@ -26,7 +26,7 @@ const gcdGame = () => {
     }
   }
 
-  console.log(`Congratulations, ${name}`);
+  console.log(`Congratulations, ${name}!`);
 };
 
 gcdGame();

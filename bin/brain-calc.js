@@ -21,7 +21,7 @@ const calcGame = () => {
 
     const operation = operations[Math.floor(Math.random() * operations.length)];
 
-    console.log(`Question: ${num1} ${operation} ${num2}: `);
+    console.log(`Question: ${num1} ${operation} ${num2}`);
     const userAnswer = Number(readlineSync.question('Your answer is: '));
     const correctAnswer = Number(calculateExpression(num1, num2, operation));
     if (checkAnswer(userAnswer, correctAnswer) === true) {

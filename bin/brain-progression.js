@@ -11,7 +11,7 @@ const progressionGame = () => {
 
   while (sum < 3) {
     const gameProgress = generateProgression();
-    console.log(`Question is: ${gameProgress.progression}`);
+    console.log(`Question: ${gameProgress.progression}`);
     const userAnswer = Number(readlineSync.question('Your answer is: '));
     const correctAnswer = gameProgress.hiddenElement;
     if (checkAnswer(userAnswer, correctAnswer) === true) {
