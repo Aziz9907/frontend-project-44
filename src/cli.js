@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 
 export default function game() {
   console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question("May I have your name? ");
+  const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   return name;
 }
@@ -46,13 +46,9 @@ export function generateProgression() {
   };
 }
 
-export function checkAnswer(userAnswer, correctAnswer, sum, name) {
+export function checkAnswer(userAnswer, correctAnswer) {
   if (userAnswer === correctAnswer) {
-    sum += 1;
-    console.log('Correct!');
-  } else {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
-    console.log(`Let's try again, ${name}`);
-    return;
+    return true;
   }
+  return false;
 }

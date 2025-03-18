@@ -1,18 +1,19 @@
 #!/usr/bin/env node
-import readlineSync from "readline-sync";
+import readlineSync from 'readline-sync';
 import game, {
   generateRandNum,
   calculateExpression,
   checkAnswer,
-} from "../src/cli.js";
+} from '../src/cli.js';
 
 const calcGame = () => {
   const name = game();
 
-  const operations = ["+", "-", "*"];
+  const operations = ['+', '-', '*'];
 
   let sum = 0;
-  console.log("What is the result of the expression?");
+
+  console.log('What is the result of the expression?');
 
   while (sum < 3) {
     const num1 = generateRandNum(1, 15);
@@ -21,9 +22,16 @@ const calcGame = () => {
     const operation = operations[Math.floor(Math.random() * operations.length)];
 
     console.log(`Question: ${num1} ${operation} ${num2}: `);
-    const userAnswer = Number(readlineSync.question("Your answer is: "));
+    const userAnswer = Number(readlineSync.question('Your answer is: '));
     const correctAnswer = Number(calculateExpression(num1, num2, operation));
-    checkAnswer(userAnswer, correctAnswer, sum, name);
+    if (checkAnswer(userAnswer, correctAnswer) === true) {
+      sum += 1;
+      console.log('Correct!');
+    } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
+      console.log(`Let's try again, ${name}`);
+      return;
+    }
   }
 
   console.log(`Congratulations, ${name}!`);

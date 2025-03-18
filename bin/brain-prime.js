@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import readlineSync from "readline-sync";
-import game, { checkAnswer, generateRandNum } from "../src/cli.js";
+import readlineSync from 'readline-sync';
+import game, { checkAnswer, generateRandNum } from '../src/cli.js';
 
 function isPrime(n) {
   if (n <= 1) return false;
@@ -19,9 +19,16 @@ const primeGame = () => {
     const num = generateRandNum(1, 10);
 
     console.log(`Question is: ${num}`);
-    const userAnswer = readlineSync.question("Your answer is: ").toLowerCase();
-    const correctAnswer = isPrime(num) ? "yes" : "no";
-    checkAnswer(userAnswer, correctAnswer, sum, name);
+    const userAnswer = readlineSync.question('Your answer is: ').toLowerCase();
+    const correctAnswer = isPrime(num) ? 'yes' : 'no';
+    if (checkAnswer(userAnswer, correctAnswer) === true) {
+      sum += 1;
+      console.log('Correct!');
+    } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
+      console.log(`Let's try again, ${name}`);
+      return;
+    }
   }
 
   console.log(`Congratulations, ${name}`);
